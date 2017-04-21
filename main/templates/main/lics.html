@@ -1,0 +1,30 @@
+{% extends 'main/header.html' %}
+{% block content %}
+    <a href="{% url 'add_lics' %}">
+        <button class="btn btn-primary">Новый абонент</button>
+    </a>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Номер лицевого счета</th>
+            <th>Дом</th>
+            <th>Квартира</th>
+            <th>Телефон</th>
+            <th>Примечание</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lic in object_list %}
+            <tr>
+                <td>{{ lic }}</td>
+                <td>{{ lic.kod_dom }}</td>
+                <td>{{ lic.kod_kvart }}</td>
+                <td>{{ lic.tel }}</td>
+                <td>{{ lic.prim }}</td>
+                <td>{{ lic.email }}</td>
+            </tr>
+        {%  endfor %}
+    </tbody>
+    </table>
+{% endblock %}
