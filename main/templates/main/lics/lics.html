@@ -2,7 +2,7 @@
 {% block content %}
     <h2>Список лицевых счетов</h2>
     <br>
-    <a href="{% url 'add_lics' %}">
+    <a href="/admin/main/lics/add/">
         <button class="btn btn-primary">Новый абонент</button>
     </a>
     <table class="table table-hover">
@@ -20,7 +20,7 @@
     <tbody>
         {% for lic in object_list %}
             <tr>
-                <td>{{ lic }}</td>
+                <td><a href="{% url 'detail_lics' lic.lics %}">{{ lic.lics }}</a></td>
                 <td>{{ lic.kod_dom }}</td>
                 <td>{{ lic.kod_kvart }}</td>
                 <td>{{ lic.tel }}</td>
@@ -28,9 +28,7 @@
                 <td>{{ lic.email }}</td>
                 <td>
                     <div class="btn-group btn-group-xs">
-                        <button type="button" class="btn btn-default" onclick="location.href = '{% url 'detail_lics' lic.lics %}'">Подр.</button>
-                        <button type="button" class="btn btn-default" onclick="location.href = '{% url 'edit_lics' lic.lics %}'">Ред.</button>
-                        <button type="button" class="btn btn-default" onclick="location.href = '{% url 'delete_lics' lic.lics %}'">Удал.</button>
+                        <button type="button" class="btn btn-default" onclick="location.href = '{% url 'detail_lics' lic.lics %}'">Подробнее</button>
                     </div>
                 </td>
             </tr>
