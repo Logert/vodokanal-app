@@ -112,3 +112,37 @@ class Tip_lgoty(models.Model):
     class Meta:
         verbose_name = 'Типы льгот'
 
+
+class Uslugi(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Наименование')
+    pricing = models.DecimalField(max_digits=6, decimal_places=4, verbose_name='Расценка')
+
+    def __str__(self):
+        return '%s' % self.name
+
+
+class MarkiPriborov(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Наименование')
+    manufacturer = models.CharField(max_length=50, verbose_name='Производитель', blank=True)
+    expir_date = models.DateField(verbose_name='Срок действия')
+
+    def __str__(self):
+        return '%s' % self.name
+
+
+class Pribory(models.Model):
+    kod_uslugi = models.ForeignKey(Uslugi, verbose_name='Услуга')
+    kod_pribor = models.ForeignKey(MarkiPriborov, verbose_name='Марка прибора')
+    sn = models.CharField(max_length=100, verbose_name='Серийный номер')
+    date_poverky = models.DateField(verbose_name="Дата последней поверки")
+
+    def __str__(self):
+        return '%s %s - %s' % (self.id, self.kod_pribor, self.kod_uslugi)
+
+
+class Pribor_Lics(models.Model):
+    lics = models.ForeignKey(Lics)
+    pribor = models.ManyToManyField(Pribory)
+
+    def __str__(self):
+        return '%s' % self.lics
