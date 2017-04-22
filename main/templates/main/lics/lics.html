@@ -6,12 +6,13 @@
     <table class="table table-hover">
     <thead>
         <tr>
-            <th>Номер лицевого счета</th>
+            <th>Лиц. счет</th>
             <th>Дом</th>
             <th>Квартира</th>
             <th>Телефон</th>
             <th>Примечание</th>
             <th>Email</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,13 @@
                 <td>{{ lic.tel }}</td>
                 <td>{{ lic.prim }}</td>
                 <td>{{ lic.email }}</td>
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <button type="button" class="btn btn-default" onclick="location.href = '{% url 'detail_lics' lic.lics %}'">Подр.</button>
+                        <button type="button" class="btn btn-default" onclick="location.href = '{% url 'edit_lics' lic.lics %}'">Ред.</button>
+                        <button type="button" class="btn btn-default" onclick="location.href = '{% url 'delete_lics' lic.lics %}'">Удал.</button>
+                    </div>
+                </td>
             </tr>
         {%  endfor %}
     </tbody>
