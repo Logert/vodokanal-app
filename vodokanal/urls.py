@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import ListLics, detail_lics
+from main.views import ListLics, detail_lics, ListDom, DetailDom
 
 urlpatterns = [
     url(r'^$', ListLics.as_view(), name='index'),
-    url(r'^listlics/$', ListLics.as_view(), name='list_lics'),
-    url(r'^listlics/(?P<lics_id>[0-9]+)/$', detail_lics, name='detail_lics'),
+    url(r'^lics/$', ListLics.as_view(), name='list_lics'),
+    url(r'^lics/(?P<lics_id>[0-9]+)/$', detail_lics, name='detail_lics'),
+    url(r'^dom/$', ListDom.as_view(), name='list_dom'),
+    url(r'^dom/(?P<pk>[0-9]+)/$', DetailDom.as_view(), name='detail_dom'),
     url(r'^admin/', admin.site.urls)
 ]

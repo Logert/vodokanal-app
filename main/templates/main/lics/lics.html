@@ -21,7 +21,7 @@
         {% for lic in object_list %}
             <tr>
                 <td><a href="{% url 'detail_lics' lic.lics %}">{{ lic.lics }}</a></td>
-                <td>{{ lic.kod_dom }}</td>
+                <td><a href="{% url 'detail_dom' lic.kod_dom_id %}">{{ lic.kod_dom }}</a></td>
                 <td>{{ lic.kod_kvart }}</td>
                 <td>{{ lic.tel }}</td>
                 <td>{{ lic.prim }}</td>

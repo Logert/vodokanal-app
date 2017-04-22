@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect, Http404
 from django.views.generic import FormView, ListView, DetailView
-from .models import Lics, Nas_punkt, Person
+from .models import Lics, Nas_punkt, Person, Dom
 
 # Лицевые счета
 
 
 class ListLics(ListView):
     model = Lics
-    success_url = '/listlics'
+    success_url = '/lics'
     template_name = 'main/lics/lics.html'
 
 
@@ -20,3 +20,17 @@ def detail_lics(request, lics_id):
     return render(request, 'main/lics/lics_detail.html',
                   {'lics': lics,
                    'persons': person})
+
+# Дома
+
+
+class ListDom(ListView):
+    model = Dom
+    success_url = '/dom'
+    template_name = 'main/dom/dom.html'
+
+
+class DetailDom(DetailView):
+    model = Dom
+    success_url = '/dom'
+    template_name = 'main/dom/dom_detail.html'
