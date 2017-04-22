@@ -120,6 +120,9 @@ class Uslugi(models.Model):
     def __str__(self):
         return '%s' % self.name
 
+    class Meta:
+        verbose_name = 'Услуги'
+
 
 class MarkiPriborov(models.Model):
     name = models.CharField(max_length=50, verbose_name='Наименование')
@@ -128,6 +131,9 @@ class MarkiPriborov(models.Model):
 
     def __str__(self):
         return '%s' % self.name
+
+    class Meta:
+        verbose_name = 'Марки приборов учета'
 
 
 class Pribory(models.Model):
@@ -139,10 +145,16 @@ class Pribory(models.Model):
     def __str__(self):
         return '%s %s - %s' % (self.id, self.kod_pribor, self.kod_uslugi)
 
+    class Meta:
+        verbose_name = 'Приборы учета'
+
 
 class Pribor_Lics(models.Model):
-    lics = models.ForeignKey(Lics)
-    pribor = models.ManyToManyField(Pribory)
+    lics = models.ForeignKey(Lics, verbose_name='Лицевой счет')
+    pribor = models.ManyToManyField(Pribory, verbose_name='Приборы учета')
 
     def __str__(self):
         return '%s' % self.lics
+
+    class Meta:
+        verbose_name = 'Связь приборов учета с лицевыми счетами'

@@ -13,4 +13,9 @@ admin.site.register(Tip_lgoty)
 admin.site.register(Pribory)
 admin.site.register(MarkiPriborov)
 admin.site.register(Uslugi)
-admin.site.register(Pribor_Lics)
+
+
+class Pribor_LicsAdmin(admin.ModelAdmin):
+    filter_horizontal = ('pribor',)
+
+admin.site.register(Pribor_Lics, Pribor_LicsAdmin)
