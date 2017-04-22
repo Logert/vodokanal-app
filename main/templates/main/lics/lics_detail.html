@@ -1,7 +1,50 @@
 {% extends 'main/header.html' %}
 {% block content %}
-    {{ lics.lics }}
-    {{ lics.kod_dom }}
-    {{ lics.kod_kvart }}
-    {{ lics.prim }}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Лицевой счет: {{ lics.lics }}</h3>
+      </div>
+      <div class="panel-body">
+          <p><strong>Дом:</strong> {{ lics.kod_dom }}</p>
+          <p><strong>Квартира:</strong> {{ lics.kod_kvart }}</p>
+          <p><strong>Телефон:</strong> {{ lics.tel }}</p>
+          <p><strong>Примечание:</strong> {{ lics.prim }}</p>
+          <p><strong>Email:</strong> {{ lics.email }}</p>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Физ лица</h3>
+      </div>
+      <div class="panel-body">
+          <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Пол</th>
+                    <th>Дата рождения</th>
+                    <th>Дата смерти</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person in persons %}
+                    <tr>
+                        <td>{{ person.id }}</td>
+                        <td>{{ person.last_name }}</td>
+                        <td>{{ person.first_name }}</td>
+                        <td>{{ person.patronymic }}</td>
+                        <td>{{ person.gender }}</td>
+                        <td>{{ person.dateOfBirdth }}</td>
+                        <td>{{ person.dateOfDeath }}</td>
+                    </tr>
+                {%  endfor %}
+            </tbody>
+          </table>
+      </div>
+    </div>
+
 {% endblock %}
