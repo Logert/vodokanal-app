@@ -17,10 +17,6 @@ class CreateLics(LicsMixin, CreateView):
     template_name = 'main/lics/lics_create.html'
 
 
-class DetailLics(LicsMixin, DetailView):
-    template_name = 'main/lics/lics_detail.html'
-
-
 def detail_lics(request, lics_id):
     lics = Lics.objects.get(lics=lics_id)
     try:

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import ListLics, CreateLics, DetailLics, UpdateLics, DeleteLics, detail_lics
+from main.views import ListLics, CreateLics, UpdateLics, DeleteLics, detail_lics
 
 urlpatterns = [
     url(r'^$', ListLics.as_view(), name='index'),
