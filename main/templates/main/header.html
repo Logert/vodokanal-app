@@ -21,13 +21,13 @@
         <div class="col-md-3">
             <div class="list-group">
               <a href="{% url 'list_lics' %}" class="list-group-item">Лицевые счета</a>
-              <a href="" class="list-group-item">Населенные пункты</a>
-              <a href="" class="list-group-item">Физические лица</a>
-              <a href="" class="list-group-item">Квартиры</a>
+              <a href="{% url 'index' %}" class="list-group-item">Населенные пункты</a>
+              <a href="{% url 'index' %}" class="list-group-item">Физические лица</a>
+              <a href="{% url 'index' %}" class="list-group-item">Квартиры</a>
               <a href="{% url 'list_dom' %}" class="list-group-item">Дома</a>
-              <a href="" class="list-group-item">Улицы</a>
-              <a href="" class="list-group-item">Льготы</a>
-              <a href="" class="list-group-item">Типы льгот</a>
+              <a href="{% url 'index' %}" class="list-group-item">Улицы</a>
+              <a href="{% url 'index' %}" class="list-group-item">Льготы</a>
+              <a href="{% url 'index' %}" class="list-group-item">Типы льгот</a>
             </div>
         </div>
         <div class="col-md-9">
@@ -39,6 +39,15 @@
 
 <!--JS-->
 
+<script>
+$(document).ready(function(){
+    $('.list-group a').each(function () {
+        if (this.href === location.href) {
+            $(this).addClass('active');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
