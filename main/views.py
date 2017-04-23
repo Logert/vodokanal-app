@@ -45,3 +45,16 @@ class DetailNasPunkt(DetailView):
     model = Nas_punkt
     success_url = '/nas_punkt'
     template_name = 'main/nas_punkt/nas_punkt_detail.html'
+
+
+# Физ лица
+class ListPersons(ListView):
+    model = Person
+    success_url = '/persons'
+    template_name = 'main/persons/persons.html'
+
+
+class DetailPersons(DetailView):
+    model = Person
+    success_url = '/persons'
+    template_name = 'main/persons/persons_detail.html'

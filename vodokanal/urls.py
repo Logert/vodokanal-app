@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import ListLics, detail_lics, ListDom, DetailDom, ListNasPunkt, DetailNasPunkt
+from main.views import ListLics, detail_lics, ListDom, DetailDom, ListNasPunkt, DetailNasPunkt, \
+    ListPersons, DetailPersons
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,6 +30,9 @@ urlpatterns = [
     # nas_punkt
     url(r'^nas_punkt/$', ListNasPunkt.as_view(), name='list_NasPunkt'),
     url(r'^nas_punkt/(?P<pk>[0-9]+)/$', DetailNasPunkt.as_view(), name='detail_NasPunkt'),
+    # persons
+    url(r'^persons/$', ListPersons.as_view(), name='list_persons'),
+    url(r'^persons/(?P<pk>[0-9]+)/$', DetailPersons.as_view(), name='detail_persons'),
 
 
 ]
