@@ -15,13 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import ListLics, detail_lics, ListDom, DetailDom
+from main.views import ListLics, detail_lics, ListDom, DetailDom, ListNasPunkt, DetailNasPunkt
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^$', ListLics.as_view(), name='index'),
+    # lics
     url(r'^lics/$', ListLics.as_view(), name='list_lics'),
     url(r'^lics/(?P<lics_id>[0-9]+)/$', detail_lics, name='detail_lics'),
+    # dom
     url(r'^dom/$', ListDom.as_view(), name='list_dom'),
     url(r'^dom/(?P<pk>[0-9]+)/$', DetailDom.as_view(), name='detail_dom'),
-    url(r'^admin/', admin.site.urls)
+    # nas_punkt
+    url(r'^nas_punkt/$', ListNasPunkt.as_view(), name='list_NasPunkt'),
+    url(r'^nas_punkt/(?P<pk>[0-9]+)/$', DetailNasPunkt.as_view(), name='detail_NasPunkt'),
+
+
 ]
