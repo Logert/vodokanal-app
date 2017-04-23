@@ -12,8 +12,6 @@
             <th>Дом</th>
             <th>Квартира</th>
             <th>Телефон</th>
-            <th>Примечание</th>
-            <th>Email</th>
             <th></th>
         </tr>
     </thead>
@@ -24,8 +22,6 @@
                 <td><a href="{% url 'detail_dom' lic.kod_dom_id %}">{{ lic.kod_dom }}</a></td>
                 <td>{{ lic.kod_kvart }}</td>
                 <td>{{ lic.tel }}</td>
-                <td>{{ lic.prim }}</td>
-                <td>{{ lic.email }}</td>
                 <td>
                     <div class="btn-group btn-group-xs">
                         <button type="button" class="btn btn-default" onclick="location.href = '{% url 'detail_lics' lic.lics %}'">Подробнее</button>

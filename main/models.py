@@ -21,7 +21,7 @@ class Dom(models.Model):
     prim = models.TextField(verbose_name='Примечание', blank=True)
 
     def __str__(self):
-        return '%s: %s, %s, %s' % (self.id, self.nas_punkt, self.street, self.number)
+        return '%s, %s, %s' % (self.nas_punkt, self.street, self.number)
 
     class Meta:
         verbose_name = 'Дома'
