@@ -93,11 +93,9 @@ class Lgoty(models.Model):
     person = models.ForeignKey(Person, verbose_name='Физ лицо')
     tip_lgoty = models.ForeignKey('Tip_lgoty', verbose_name='Тип льготы')
     number = models.CharField(max_length=20, verbose_name='Серия и номер льготы')
-    date_in = models.DateField(verbose_name='Дата начала действия льготы')
-    date_out = models.DateField(verbose_name='Дата окончания действия льготы', blank=True)
 
     def __str__(self):
-        return '%s' % self.number
+        return '%s' % self.person
 
     class Meta:
         verbose_name = 'Льготы'
@@ -105,9 +103,11 @@ class Lgoty(models.Model):
 
 class Tip_lgoty(models.Model):
     name = models.TextField(verbose_name='Наименование льготы')
+    date_in = models.DateField(verbose_name='Дата начала действия льготы', blank=True, null=True)
+    date_out = models.DateField(verbose_name='Дата окончания действия льготы', blank=True, null=True)
 
     def __str__(self):
-        return '%s' % self.id
+        return '%s' % self.name
 
     class Meta:
         verbose_name = 'Типы льгот'
