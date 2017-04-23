@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, Http404
 from django.views.generic import FormView, ListView, DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Lics, Nas_punkt, Person, Dom, Kvartiry, Street
+from .models import Lics, Nas_punkt, Person, Dom, Kvartiry, Street, Lgoty, Tip_lgoty
 
 
 # Лицевые счета
@@ -100,3 +100,16 @@ class DetailStreets(DetailView):
     model = Street
     success_url = '/streets'
     template_name = 'main/streets/streets_detail.html'
+
+
+# Льготы
+class ListLgoty(ListView):
+    model = Lgoty
+    success_url = '/lgoty'
+    template_name = 'main/lgoty/lgoty.html'
+
+
+class DetailLgoty(DetailView):
+    model = Lgoty
+    success_url = '/lgoty'
+    template_name = 'main/lgoty/lgoty_detail.html'
