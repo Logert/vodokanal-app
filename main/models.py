@@ -6,7 +6,7 @@ class Kvartiry(models.Model):
     number = models.IntegerField(verbose_name='Номер квартиры')
 
     def __str__(self):
-        return '%s' % self.number
+        return '%s - %s' % (self.number, self.kod_dom)
 
     class Meta:
         verbose_name = 'Квартиры'
@@ -21,7 +21,7 @@ class Dom(models.Model):
     prim = models.TextField(verbose_name='Примечание', blank=True)
 
     def __str__(self):
-        return '%s, %s, %s' % (self.nas_punkt, self.street, self.number)
+        return '%s: %s, %s, %s' % (self.id, self.nas_punkt, self.street, self.number)
 
     class Meta:
         verbose_name = 'Дома'
