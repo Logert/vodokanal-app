@@ -113,3 +113,16 @@ class DetailLgoty(DetailView):
     model = Lgoty
     success_url = '/lgoty'
     template_name = 'main/lgoty/lgoty_detail.html'
+
+
+# Типы льгот
+class ListTipLgoty(ListView):
+    model = Tip_lgoty
+    success_url = '/tip_lgoty'
+    template_name = 'main/tip_lgoty/tip_lgoty.html'
+
+
+class DetailTipLgoty(DetailView):
+    model = Tip_lgoty
+    success_url = '/tip_lgoty'
+    template_name = 'main/tip_lgoty/tip_lgoty_detail.html'

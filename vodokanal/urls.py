@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from main.views import ListLics, detail_lics, ListDom, DetailDom, ListNasPunkt, DetailNasPunkt, \
     ListPersons, DetailPersons, ListKvartiry, DetailKvartiry, ListStreets, DetailStreets, \
-    ListLgoty, DetailLgoty
+    ListLgoty, DetailLgoty, ListTipLgoty, DetailTipLgoty
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -43,6 +43,9 @@ urlpatterns = [
     # lgoty
     url(r'^lgoty/$', ListLgoty.as_view(), name='list_lgoty'),
     url(r'^lgoty/(?P<pk>[0-9]+)/$', DetailLgoty.as_view(), name='detail_lgoty'),
+    # tip_lgoty
+    url(r'^tip_lgoty/$', ListTipLgoty.as_view(), name='list_tip_lgoty'),
+    url(r'^tip_lgoty/(?P<pk>[0-9]+)/$', DetailTipLgoty.as_view(), name='detail_tip_lgoty'),
 
 
 ]
