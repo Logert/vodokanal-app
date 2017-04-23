@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from main.views import ListLics, detail_lics, ListDom, DetailDom, ListNasPunkt, DetailNasPunkt, \
-    ListPersons, DetailPersons
+    ListPersons, DetailPersons, ListKvartiry, DetailKvartiry
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -33,6 +33,9 @@ urlpatterns = [
     # persons
     url(r'^persons/$', ListPersons.as_view(), name='list_persons'),
     url(r'^persons/(?P<pk>[0-9]+)/$', DetailPersons.as_view(), name='detail_persons'),
+    # kvartiry
+    url(r'^kvartiry/$', ListKvartiry.as_view(), name='list_kvartiry'),
+    url(r'^kvartiry/(?P<pk>[0-9]+)/$', DetailKvartiry.as_view(), name='detail_kvartiry'),
 
 
 ]

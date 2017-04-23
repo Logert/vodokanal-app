@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, Http404
 from django.views.generic import FormView, ListView, DetailView
-from .models import Lics, Nas_punkt, Person, Dom
+from .models import Lics, Nas_punkt, Person, Dom, Kvartiry
 
 
 # Лицевые счета
@@ -58,3 +58,16 @@ class DetailPersons(DetailView):
     model = Person
     success_url = '/persons'
     template_name = 'main/persons/persons_detail.html'
+
+
+# Квартиры
+class ListKvartiry(ListView):
+    model = Kvartiry
+    success_url = '/kvartiry'
+    template_name = 'main/kvartiry/kvartiry.html'
+
+
+class DetailKvartiry(DetailView):
+    model = Kvartiry
+    success_url = '/kvartiry'
+    template_name = 'main/kvartiry/kvartiry_detail.html'
