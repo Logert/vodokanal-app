@@ -20,7 +20,7 @@
             <tr>
                 <td><a href="{% url 'detail_lics' lic.lics %}">{{ lic.lics }}</a></td>
                 <td><a href="{% url 'detail_dom' lic.kod_dom_id %}">{{ lic.kod_dom }}</a></td>
-                <td>{{ lic.kod_kvart }}</td>
+                <td><a href="{% url 'detail_kvartiry' lic.kod_kvart_id %}"> {{ lic.kod_kvart }}</a></td>
                 <td>{{ lic.tel }}</td>
                 <td>
                     <div class="btn-group btn-group-xs">

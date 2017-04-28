@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, Http404
 from django.views.generic import FormView, ListView, DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Lics, Nas_punkt, Person, Dom, Kvartiry, Street, Lgoty, Tip_lgoty
+from .models import Lics, Nas_punkt, Person, Dom, Kvartiry, Street, Lgoty, Tip_lgoty, Pribory
 
 
 # Лицевые счета
@@ -82,16 +82,13 @@ class ListStreets(ListView):
 
     def get_queryset(self):
         streets = Street.objects.all()
-        # Отбираем первые 50 улиц
         paginator = Paginator(streets, 50)
         page = self.request.GET.get('page')
         try:
             streets = paginator.page(page)
         except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
             streets = paginator.page(1)
         except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
             streets = paginator.page(paginator.num_pages)
         return streets
 
@@ -126,3 +123,16 @@ class DetailTipLgoty(DetailView):
     model = Tip_lgoty
     success_url = '/tip_lgoty'
     template_name = 'main/tip_lgoty/tip_lgoty_detail.html'
+
+
+# Приборы учета
+class ListPribiry(ListView):
+    model = Pribory
+    success_url = '/pribory'
+    template_name = 'main/pribory/pribory.html'
+
+
+class DetailPribory(DetailView):
+    model = Pribory
+    success_url = '/pribory'
+    template_name = 'main/pribory/pribory_detail.html'
