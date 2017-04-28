@@ -13,6 +13,7 @@
             <th>Марка прибора</th>
             <th>Серийный номер</th>
             <th>Дата последней поверки</th>
+            <th>Показания счетчика</th>
             <th></th>
         </tr>
     </thead>
@@ -24,6 +25,7 @@
                 <td>{{ pribor.kod_pribor }}</td>
                 <td>{{ pribor.sn }}</td>
                 <td>{{ pribor.date_poverky }}</td>
+                <td>{{ pribor.value }}</td>
                 <td>
                     <div class="btn-group btn-group-xs">
                         <button type="button" class="btn btn-default" onclick="location.href = '{% url 'detail_pribory' pribor.id %}'">Подробнее</button>
