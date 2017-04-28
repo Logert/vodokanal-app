@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, Http404
 from django.views.generic import FormView, ListView, DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Lics, Nas_punkt, Person, Dom, Kvartiry, Street, Lgoty, Tip_lgoty, \
-    Pribory, MarkiPriborov
+    Pribory, MarkiPriborov, Uslugi
 
 
 # Лицевые счета
@@ -150,3 +150,16 @@ class DetailMarkiPribory(DetailView):
     model = MarkiPriborov
     success_url = '/marki_pribory'
     template_name = 'main/marki_pribory/marki_pribory_detail.html'
+
+
+# Услуги
+class ListUslugi(ListView):
+    model = Uslugi
+    success_url = '/uslugi'
+    template_name = 'main/uslugi/uslugi.html'
+
+
+class DetailUslugi(DetailView):
+    model = Uslugi
+    success_url = '/uslugi'
+    template_name = 'main/uslugi/uslugi_detail.html'

@@ -18,7 +18,7 @@ from django.contrib import admin
 from main.views import ListLics, detail_lics, ListDom, DetailDom, ListNasPunkt, DetailNasPunkt, \
     ListPersons, DetailPersons, ListKvartiry, DetailKvartiry, ListStreets, DetailStreets, \
     ListLgoty, DetailLgoty, ListTipLgoty, DetailTipLgoty, ListPribory, DetailPribory, \
-    ListMarkiPribory, DetailMarkiPribory
+    ListMarkiPribory, DetailMarkiPribory, ListUslugi, DetailUslugi
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -53,6 +53,9 @@ urlpatterns = [
     # Marki priborov
     url(r'^marki_pribory/$', ListMarkiPribory.as_view(), name='list_marki_pribory'),
     url(r'^marki_pribory/(?P<pk>[0-9]+)/$', DetailMarkiPribory.as_view(), name='detail_marki_pribory'),
+    # uslugi
+    url(r'^uslugi/$', ListUslugi.as_view(), name='list_uslugi'),
+    url(r'^uslugi/(?P<pk>[0-9]+)/$', DetailUslugi.as_view(), name='detail_uslugi'),
 
 
 ]

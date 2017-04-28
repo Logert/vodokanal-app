@@ -1,0 +1,13 @@
+{% extends 'main/header.html' %}
+{% block content %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Услуга: {{ object.id }}</h3>
+      </div>
+      <div class="panel-body">
+          <p><strong>Наименование:</strong> {{ object.name }}</p>
+          <p><strong>Расценка:</strong> {{ object.pricing }}</p>
+      </div>
+    </div>
+
+{% endblock %}
