@@ -17,7 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from main.views import ListLics, detail_lics, ListDom, DetailDom, ListNasPunkt, DetailNasPunkt, \
     ListPersons, DetailPersons, ListKvartiry, DetailKvartiry, ListStreets, DetailStreets, \
-    ListLgoty, DetailLgoty, ListTipLgoty, DetailTipLgoty, ListPribiry, DetailPribory
+    ListLgoty, DetailLgoty, ListTipLgoty, DetailTipLgoty, ListPribory, DetailPribory, \
+    ListMarkiPribory, DetailMarkiPribory
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -47,8 +48,11 @@ urlpatterns = [
     url(r'^tip_lgoty/$', ListTipLgoty.as_view(), name='list_tip_lgoty'),
     url(r'^tip_lgoty/(?P<pk>[0-9]+)/$', DetailTipLgoty.as_view(), name='detail_tip_lgoty'),
     # pribory
-    url(r'^pribory/$', ListPribiry.as_view(), name='list_pribory'),
+    url(r'^pribory/$', ListPribory.as_view(), name='list_pribory'),
     url(r'^pribory/(?P<pk>[0-9]+)/$', DetailPribory.as_view(), name='detail_pribory'),
+    # Marki priborov
+    url(r'^marki_pribory/$', ListMarkiPribory.as_view(), name='list_marki_pribory'),
+    url(r'^marki_pribory/(?P<pk>[0-9]+)/$', DetailMarkiPribory.as_view(), name='detail_marki_pribory'),
 
 
 ]
