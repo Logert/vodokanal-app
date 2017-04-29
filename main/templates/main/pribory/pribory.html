@@ -14,6 +14,7 @@
             <th>Серийный номер</th>
             <th>Дата последней поверки</th>
             <th>Показания счетчика</th>
+            <th>Оплачено</th>
             <th></th>
         </tr>
     </thead>
@@ -26,6 +27,7 @@
                 <td>{{ pribor.sn }}</td>
                 <td>{{ pribor.date_poverky }}</td>
                 <td>{{ pribor.value }}</td>
+                <td>{{ pribor.oplata }}</td>
                 <td>
                     <div class="btn-group btn-group-xs">
                         <button type="button" class="btn btn-default" onclick="location.href = '{% url 'detail_pribory' pribor.id %}'">Подробнее</button>

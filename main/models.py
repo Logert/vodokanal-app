@@ -142,6 +142,7 @@ class Pribory(models.Model):
     sn = models.CharField(max_length=100, verbose_name='Серийный номер')
     date_poverky = models.DateField(verbose_name="Дата последней поверки")
     value = models.IntegerField(verbose_name="Показания счетчика", default=0)
+    oplata = models.IntegerField(verbose_name="Оплачено", default=0)
 
     def __str__(self):
         return '%s %s - %s' % (self.id, self.kod_pribor, self.kod_uslugi)
@@ -152,7 +153,7 @@ class Pribory(models.Model):
 
 class Pribor_Lics(models.Model):
     lics = models.ForeignKey(Lics, verbose_name='Лицевой счет')
-    pribor = models.ManyToManyField(Pribory, verbose_name='Приборы учета')
+    pribor = models.OneToOneField(Pribory, verbose_name='Приборы учета', default=0)
 
     def __str__(self):
         return '%s' % self.lics

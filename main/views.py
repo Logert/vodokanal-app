@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, Http404
 from django.views.generic import FormView, ListView, DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Lics, Nas_punkt, Person, Dom, Kvartiry, Street, Lgoty, Tip_lgoty, \
-    Pribory, MarkiPriborov, Uslugi
+    Pribory, MarkiPriborov, Uslugi, Pribor_Lics
 
 
 # Лицевые счета
@@ -13,14 +13,37 @@ class ListLics(ListView):
 
 
 def detail_lics(request, lics_id):
+    kub_kanal = kub_voda = oplata_kanal = oplata_voda = 0
     lics = Lics.objects.get(lics=lics_id)
-    try:
-        person = Person.objects.filter(lics=lics_id)
-    except Person.DoesNotExist:
-        raise Http404("Question does not exist")
+    person = Person.objects.filter(lics=lics_id)
+    lic_pribor = Pribor_Lics.objects.filter(lics=lics_id)
+    pribory = Pribory.objects.filter(id__in=lic_pribor.values('pribor'))
+
+    for pribor in pribory:
+        if pribor.kod_uslugi_id == 1:
+            if pribor.value == pribor.oplata:
+                oplata_voda = 0
+            else:
+                kub_voda += pribor.value - pribor.oplata
+                oplata_voda = kub_voda * pribor.kod_uslugi.pricing
+        elif pribor.kod_uslugi_id == 2:
+            if pribor.value == pribor.oplata:
+                oplata_kanal = 0
+            else:
+                kub_kanal += pribor.value - pribor.oplata
+                oplata_kanal = kub_kanal * pribor.kod_uslugi.pricing
+        else:
+            kub_kanal = kub_voda = oplata_kanal = oplata_voda = 0
+
+    oplata = oplata_kanal + oplata_voda
     return render(request, 'main/lics/lics_detail.html',
                   {'lics': lics,
-                   'persons': person})
+                   'persons': person,
+                   'pribory': pribory,
+                   'oplata': round(oplata, 2),
+                   'oplata_voda': round(oplata_voda, 2),
+                   'oplata_kanal': round(oplata_kanal, 2)
+                   })
 
 
 # Дома
