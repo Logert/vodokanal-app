@@ -23,7 +23,7 @@
         {% for person in object_list %}
             <tr>
                 <td><a href="{% url 'detail_persons' person.id %}">{{ person.id }}</a></td>
-                <td>{{ person.lics }}</td>
+                <td><a href="{% url 'detail_lics' person.lics %}">{{ person.lics }}</a></td>
                 <td>{{ person.first_name }}</td>
                 <td>{{ person.last_name }}</td>
                 <td>{{ person.patronymic }}</td>

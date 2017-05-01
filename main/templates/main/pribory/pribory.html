@@ -21,8 +21,8 @@
         {% for pribor in object_list %}
             <tr class="{% if pribor.oplata %}success{% else %}danger{% endif %}">
                 <td><a href="{% url 'detail_pribory' pribor.id %}">{{ pribor.id }}</a></td>
-                <td>{{ pribor.kod_uslugi }}</td>
-                <td>{{ pribor.kod_pribor }}</td>
+                <td><a href="{% url 'detail_uslugi' pribor.kod_uslugi_id %}">{{ pribor.kod_uslugi }}</a></td>
+                <td><a href="{% url 'detail_marki_pribory' pribor.kod_pribor_id %}">{{ pribor.kod_pribor }}</a></td>
                 <td>{{ pribor.sn }}</td>
                 <td>{{ pribor.date_poverky }}</td>
                 <td>{{ pribor.value }}</td>

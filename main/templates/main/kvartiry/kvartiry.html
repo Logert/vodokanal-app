@@ -18,7 +18,7 @@
         {% for kvartiry in object_list %}
             <tr>
                 <td><a href="{% url 'detail_kvartiry' kvartiry.id %}">{{ kvartiry.id }}</a></td>
-                <td>{{ kvartiry.kod_dom }}</td>
+                <td><a href="{% url 'detail_dom' kvartiry.kod_dom_id %}">{{ kvartiry.kod_dom }}</a></td>
                 <td>{{ kvartiry.number }}</td>
                 <td>
                     <div class="btn-group btn-group-xs">

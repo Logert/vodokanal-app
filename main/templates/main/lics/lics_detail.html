@@ -44,7 +44,7 @@
             <tbody>
                 {% for person in persons %}
                     <tr>
-                        <td>{{ person.id }}</td>
+                        <td><a href="{% url 'detail_persons' person.id %}">{{ person.id }}</a></td>
                         <td>{{ person.last_name }}</td>
                         <td>{{ person.first_name }}</td>
                         <td>{{ person.patronymic }}</td>
@@ -78,7 +78,7 @@
             <tbody>
                 {% for obj in pribory %}
                     <tr class="{% if obj.oplata %}success{% else %}danger{% endif %}">
-                        <td>{{ obj.id }}</td>
+                        <td><a href="{% url 'detail_pribory' obj.id %}">{{ obj.id }}</a></td>
                         <td>{{ obj.kod_uslugi }}</td>
                         <td>{{ obj.kod_pribor }}</td>
                         <td>{{ obj.date_poverky }}</td>

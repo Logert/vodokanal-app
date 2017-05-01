@@ -18,8 +18,8 @@
         {% for lgot in object_list %}
             <tr>
                 <td><a href="{% url 'detail_lgoty' lgot.id %}">{{ lgot.id }}</a></td>
-                <td>{{ lgot.person }}</td>
-                <td>{{ lgot.tip_lgoty }}</td>
+                <td><a href="{% url 'detail_persons' lgot.person_id %}">{{ lgot.person }}</a></td>
+                <td><a href="{% url 'detail_tip_lgoty' lgot.tip_lgoty_id %}">{{ lgot.tip_lgoty }}</a></td>
                 <td>
                     <div class="btn-group btn-group-xs">
                         <button type="button" class="btn btn-default" onclick="location.href = '{% url 'detail_lgoty' lgot.id %}'">Подробнее</button>
