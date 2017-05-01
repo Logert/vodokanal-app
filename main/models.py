@@ -142,7 +142,7 @@ class Pribory(models.Model):
     sn = models.CharField(max_length=100, verbose_name='Серийный номер')
     date_poverky = models.DateField(verbose_name="Дата последней поверки")
     value = models.IntegerField(verbose_name="Показания счетчика", default=0)
-    oplata = models.IntegerField(verbose_name="Оплачено", default=0)
+    oplata = models.BooleanField(verbose_name='Оплачено?', default=False)
 
     def __str__(self):
         return '%s %s - %s' % (self.id, self.kod_pribor, self.kod_uslugi)

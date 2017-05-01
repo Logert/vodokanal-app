@@ -72,19 +72,22 @@
                     <th>Марка прибора</th>
                     <th>Дата поверки</th>
                     <th>Показания m3</th>
-                    <th>Оплачено m3</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 {% for obj in pribory %}
-                    <tr>
+                    <tr class="{% if obj.oplata %}success{% else %}danger{% endif %}">
                         <td>{{ obj.id }}</td>
                         <td>{{ obj.kod_uslugi }}</td>
                         <td>{{ obj.kod_pribor }}</td>
                         <td>{{ obj.date_poverky }}</td>
                         <td>{{ obj.value }}</td>
-                        <td>{{ obj.oplata }}</td>
+                        <td>
+                            <a href="/admin/main/pribory/{{ obj.id }}/change/" class="btn-sm btn-success">
+                                Ввод показаний
+                            </a>
+                        </td>
                     </tr>
                 {%  endfor %}
             </tbody>
