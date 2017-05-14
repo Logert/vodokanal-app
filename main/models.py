@@ -1,6 +1,20 @@
 from django.db import models
 
 
+class Dogovory(models.Model):
+    number = models.CharField(verbose_name='Договора', max_length=10)
+    expir_date = models.DateField(verbose_name='Дата окончания договора', blank=True, null=True)
+    usluga = models.ForeignKey("Uslugi", verbose_name='Услуга')
+    saldo_in = models.DecimalField(max_digits=6, decimal_places=4, verbose_name='Входящее сальдо')
+    saldo_out = models.DecimalField(max_digits=6, decimal_places=4, verbose_name='Исходящее сальдо')
+
+    def __str__(self):
+        return '%s' % self.number
+
+    class Meta:
+        verbose_name = 'Договора'
+
+
 class Kvartiry(models.Model):
     kod_dom = models.ForeignKey("Dom", verbose_name='Дом')
     number = models.IntegerField(verbose_name='Номер квартиры')
@@ -34,6 +48,7 @@ class Lics(models.Model):
     tel = models.CharField(max_length=50, verbose_name="Телефон", blank=True)
     prim = models.TextField(verbose_name='Примечание', blank=True)
     email = models.CharField(max_length=20, verbose_name='Email', blank=True)
+    dogovor = models.ForeignKey("Dogovory", verbose_name='Договор', default=0)
 
     def __str__(self):
         return '%s' % self.lics
@@ -93,6 +108,7 @@ class Lgoty(models.Model):
     person = models.ForeignKey(Person, verbose_name='Физ лицо')
     tip_lgoty = models.ForeignKey('Tip_lgoty', verbose_name='Тип льготы')
     number = models.CharField(max_length=20, verbose_name='Серия и номер льготы')
+    skidka = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='Скидка', default=0)
 
     def __str__(self):
         return '%s' % self.person

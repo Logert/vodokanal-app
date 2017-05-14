@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Dom, Lics, Street, Nas_punkt, Kvartiry, Person, Lgoty, Tip_lgoty, Pribory, MarkiPriborov, Uslugi, Pribor_Lics
+from .models import Dom, Lics, Street, Nas_punkt, Kvartiry, Person, Lgoty, Tip_lgoty, Pribory, MarkiPriborov, Uslugi, Pribor_Lics, Dogovory
 
 
 admin.site.register(Dom)
@@ -14,3 +14,5 @@ admin.site.register(Pribory)
 admin.site.register(MarkiPriborov)
 admin.site.register(Uslugi)
 admin.site.register(Pribor_Lics)
+admin.site.register(Dogovory)
+

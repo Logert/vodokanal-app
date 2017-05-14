@@ -18,6 +18,12 @@ def detail_lics(request, lics_id):
     person = Person.objects.filter(lics=lics_id)
     lic_pribor = Pribor_Lics.objects.filter(lics=lics_id)
     pribory = Pribory.objects.filter(id__in=lic_pribor.values('pribor'))
+    lgoty = Lgoty.objects.filter(person=person)
+
+    skidka = 0
+    for lgota in lgoty:
+        if lgota.skidka > skidka:
+            skidka = lgota.skidka
 
     for pribor in pribory:
         if pribor.kod_uslugi_id == 1 and not pribor.oplata:
@@ -30,13 +36,19 @@ def detail_lics(request, lics_id):
             kub_kanal = kub_voda = oplata_kanal = oplata_voda = 0
 
     oplata = oplata_kanal + oplata_voda
+    if skidka != 0:
+        result = oplata - (oplata * (skidka / 100))
+    else:
+        result = oplata
+
     return render(request, 'main/lics/lics_detail.html',
                   {'lics': lics,
                    'persons': person,
                    'pribory': pribory,
-                   'oplata': round(oplata, 2),
+                   'oplata': round(result, 2),
                    'oplata_voda': round(oplata_voda, 2),
-                   'oplata_kanal': round(oplata_kanal, 2)
+                   'oplata_kanal': round(oplata_kanal, 2),
+                   'skidka': skidka
                    })
 
 

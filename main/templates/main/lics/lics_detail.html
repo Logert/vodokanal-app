@@ -1,6 +1,11 @@
 {% extends 'main/header.html' %}
 {% block content %}
 
+    <div class="btn-group" style="margin-bottom: 20px ">
+        <button class="btn btn-success" onclick="location.href = '/admin/main/lics/{{ lics.lics }}/change/'">Редактировать</button>
+        <button class="btn btn-info" onclick="location.href = '/admin/main/pribor_lics/add/'">Добавить прибор учета</button>
+    </div>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Лицевой счет: {{ lics.lics }}</h3>
@@ -14,13 +19,16 @@
       </div>
     </div>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-          <p>К оплате: {{ oplata }} BYN</p>
-          <p>в том числе за Водоснабжение: {{ oplata_voda }} BYN</p>
-          <p>в том числе за Канализацию: {{ oplata_kanal }} BYN</p>
-      </div>
-    </div>
+    {% if oplata %}
+        <div class="panel panel-default">
+          <div class="panel-body">
+              <p>К оплате: {{ oplata }} BYN</p>
+              <p>Скидка по льготе: {{ skidka }} %</p>
+              <p>в том числе за Водоснабжение: {{ oplata_voda }} BYN</p>
+              <p>в том числе за Канализацию: {{ oplata_kanal }} BYN</p>
+          </div>
+        </div>
+    {% endif %}
 
     {% if persons %}
         <div class="panel panel-default">
